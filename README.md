@@ -60,7 +60,7 @@ The **Personal Cloud Drive System** provides:
 ## 🔐 Environment Variables (`.env`)
 
 ```env
-PORT=5000
+PORT=your_Port
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
