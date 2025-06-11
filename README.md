@@ -78,5 +78,4 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 🙋‍♂️ Author
 Onkar Dunakhe  
 📧 onkardunakhe1@gmail.com  
-🔗 [www.linkedin.com/in/onkar-dunakhe](https://www.linkedin.com/in/onkar-dunakhe)
-
+🔗www.linkedin.com/in/onkar-dunakhe
