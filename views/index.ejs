@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-500 dark:bg-gray-800">
+    <div class="absolute top-0 left-0 w-full p-4 bg-blue-700 text-white text-center text-3xl font-bold">
+        Welcome to CloudDrive, <%= username %>
+    </div>
+    <main class="p-4 flex flex-col items-center justify-center space-y-4 mt-16">
+        <h1 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">Upload Your Files By Clicking
+            Upload Button</h1>
+        <button type="submit" onclick="showpop()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Upload File
+        </button>
+        <div class="pop flex items-center justify-center w-full hidden">
+            <form action="/home/upload" method="post" enctype="multipart/form-data" class="w-full md:w-1/2">
+                <div class="flex items-center justify-center w-full">
+                    <label for="dropzone-file"
+                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click
+                                    to
+                                    upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                        </div>
+                        <input id="dropzone-file" type="file" class="hidden" name="file" />
+                    </label>
+                </div>
+                <div class="flex justify-center mt-1 space-x-4">
+                    <button type="submit"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Upload</button>
+
+                </div>
+            </form>
+
+        </div>
+        <button onclick="hidepop()"
+            class="btn1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hidden">Close</button>
+
+    </main>
+    <div class="files mt-3 flex flex-col gap-2">
+        <% if (typeof files !=='undefined' && files.length> 0) { %>
+            <% files.forEach((file)=> { %>
+                <div class="p-2 cursor-pointer rounded-md bg-gray-300 ">
+                    <h1 class="flex items-center justify-between">
+                        <%= file.originalname %>
+                            <a href="/download/<%= encodeURIComponent(file.path) %>" download="<%= file.originalname %>"
+                                target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-download" viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                                    <path
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                                </svg>
+                            </a>
+
+                    </h1>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p>
+                            "No files available."
+                        </p>
+                        <% } %>
+
+    </div>
+    <div class="flex items-center justify-center w-full">
+        <a href="/logout"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            LogOut
+        </a>
+    </div>
+
+
+</body>
+<script>
+    function showpop() {
+        document.querySelector('.pop').style.display = 'flex';
+        document.querySelector('.btn1').style.display = 'flex';
+    }
+    function hidepop() {
+        document.querySelector('.pop').style.display = 'none';
+        document.querySelector('.btn1').style.display = 'none';
+
+    }
+
+
+</script>
+
+</html>
