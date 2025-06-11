@@ -67,14 +67,16 @@ CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-## ✨ Future Improvements
+ ✨ Future Improvements
+
 - 📥 Drag-and-drop file upload  
 - 📂 Folder organization  
 - 🔍 File search & filters  
 - 🔐 Two-factor authentication (2FA)  
 - 🌍 Cloudinary transformations for images/videos  
 
-## 🙋‍♂️ Author
-- **Onkar Dunakhe**  
-- 📧 onkardunakhe1@gmail.com  
-- 🔗 [www.linkedin.com/in/onkar-dunakhe](https://www.linkedin.com/in/onkar-dunakhe)
+🙋‍♂️ Author
+Onkar Dunakhe  
+📧 onkardunakhe1@gmail.com  
+🔗 [www.linkedin.com/in/onkar-dunakhe](https://www.linkedin.com/in/onkar-dunakhe)
+
